@@ -1,0 +1,22 @@
+-- 일시적으로 속도를 올리는 기능
+local speedBoost = script.Parent
+
+-- 속도를 2초동안 올리는 함수
+local function speedUP(otherPart)
+	-- 아바타 인지 
+	local character = otherPart.Parent
+	local humanoid = character:FindFirstChildWhichIsA("Humanoid")
+	
+	-- 기본 속도가 16인지 다시 알아보기
+	if humanoid and humanoid.WalkSpeed <=16 then
+		-- 속도 올리기
+		print("야호 달려 달려~")
+		humanoid.WalkSpeed = 50
+		wait(2)
+		print("다시 기본 속도")
+		humanoid.WalkSpeed = 16
+	end
+	
+end
+
+speedBoost.Touched:Connect(speedUP)
